@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.fest.assertions.Assertions;
+
 import com.algorithms.scheduling.FirstEndingSchedulingAlgorithm;
 import com.algorithms.scheduling.TimeInterval;
 
@@ -47,9 +49,28 @@ public class FirstEndingSchedulingAlgorithmTest {
     
     FirstEndingSchedulingAlgorithm algorithm = new FirstEndingSchedulingAlgorithm();
     List<TimeInterval> answer = algorithm.accept(intervals);
+    
     for(TimeInterval ti : answer){
       System.out.println(ti.getId());
     }
+    
+    
+    Assertions.assertThat(answer)
+      .as("accepted intervals")
+        .hasSize(4);
+    Assertions.assertThat(answer.get(0).getId())
+      .as("0th item")
+        .isEqualTo("Discrete Mathematics");
+    Assertions.assertThat(answer.get(1).getId())
+      .as("0th item")
+        .isEqualTo("Halting State");
+    Assertions.assertThat(answer.get(2).getId())
+      .as("0th item")
+        .isEqualTo("Programming Challenges");
+    Assertions.assertThat(answer.get(3).getId())
+      .as("0th item")
+        .isEqualTo("Calculated Bets");
+    
   }
   
   private Calendar instantiate(long l){
