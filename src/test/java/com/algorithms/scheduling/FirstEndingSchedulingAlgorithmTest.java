@@ -62,13 +62,13 @@ public class FirstEndingSchedulingAlgorithmTest {
       .as("0th item")
         .isEqualTo("Discrete Mathematics");
     Assertions.assertThat(answer.get(1).getId())
-      .as("0th item")
+      .as("1st item")
         .isEqualTo("Halting State");
     Assertions.assertThat(answer.get(2).getId())
-      .as("0th item")
+      .as("2nd item")
         .isEqualTo("Programming Challenges");
     Assertions.assertThat(answer.get(3).getId())
-      .as("0th item")
+      .as("3rd item")
         .isEqualTo("Calculated Bets");
     
   }
