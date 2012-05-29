@@ -1,1 +1,8 @@
+# mvn build directory
 target/
+
+# eclipse project files
+.classpath
+.project
+.settings
+
