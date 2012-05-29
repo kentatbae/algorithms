@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
+ * A {@link SchedulingAlgorithm} that accepts intervals based on their ending time.
  * @author Kent McHenry
  */
 public class FirstEndingSchedulingAlgorithm implements SchedulingAlgorithm {
@@ -27,6 +28,7 @@ public class FirstEndingSchedulingAlgorithm implements SchedulingAlgorithm {
     }
   };
 
+  
   public List<TimeInterval> accept(Set<TimeInterval> intervals) {
 
     List<TimeInterval> acceptedIntervals = new ArrayList<TimeInterval>();
@@ -37,7 +39,7 @@ public class FirstEndingSchedulingAlgorithm implements SchedulingAlgorithm {
     Collections.sort(sorted, END_TIME_COMPARATOR);
     
     // accept the first ending interval while ignoring any that intersect
-    // all incrementing of i is done within the j loop
+    // by skipping past them in the j loop
     for (int i = 0; i < sorted.size(); i++) {
       TimeInterval accepted = sorted.get(i);
       acceptedIntervals.add(accepted);
@@ -49,8 +51,8 @@ public class FirstEndingSchedulingAlgorithm implements SchedulingAlgorithm {
           // skip this item because it intersects an item that is accepted
           continue;
         } else {
-          // move i loop to this item so it will be added (including
-          // the i++) and break j loop
+          // move i loop to this item so it will be added
+          // (account for the i++, by using j-1) and break j loop
           i = j-1;
           break;
         }
